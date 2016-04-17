@@ -1,0 +1,36 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+
+# S expansion productions
+S -> NP_SG_1 VP_SG_1
+S -> NP_SG_2 VP_SG_2
+S -> NP_SG_3 VP_SG_3
+S -> NP_PL VP_PL
+
+# NP expansion productions
+NP_SG_1 -> PN_SG_1
+NP_SG_2 -> PN_SG_2
+NP_SG_3 -> PN_SG_3
+NP_PL -> PN_PL
+
+# VP expansion productions
+VP_SG_1 -> V_SG_1 ADJ
+VP_SG_2 -> V_SG_2 ADJ
+VP_SG_3 -> V_SG_3 ADJ
+VP_PL -> V_PL ADJ
+
+# ###################
+# Lexical Productions
+# ###################
+
+PN_SG_1 -> 'I'
+PN_SG_2 -> 'You'
+PN_SG_2 -> 'He' | 'She' | 'It'
+PN_PL -> 'We' | 'You' | 'They'
+V_SG_1 -> 'am'
+V_SG_2 -> 'are'
+V_SG_1 -> 'is'
+V_PL -> 'are'
+ADJ -> 'happy'

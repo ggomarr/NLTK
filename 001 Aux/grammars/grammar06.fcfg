@@ -1,0 +1,22 @@
+% start NP
+# Grammar Productions
+NP -> Det[AGR=?a] N[AGR=?a] Adj[AGR=?a]
+NP -> Det[AGR=?a] Adj[AGR=?a] N[AGR=?a]
+NP -> Det[AGR=?a] N[AGR=?a]
+# Lexical Productions
+# Determiners
+Det[AGR=[GND=masc,NUM=sg]] -> 'un'
+Det[AGR=[GND=masc,NUM=pl]] -> 'unos'
+Det[AGR=[GND=fem,NUM=sg]] -> 'una'
+Det[AGR=[GND=fem,NUM=pl]] -> 'unas'
+# Nouns
+N[AGR=[GND=masc,NUM=sg]] -> 'cuadro'
+N[AGR=[GND=masc,NUM=pl]] -> 'cuadros'
+N[AGR=[GND=fem,NUM=sg]] -> 'cortina'
+N[AGR=[GND=fem,NUM=pl]] -> 'cortinas'
+# Adjectives
+Adj[AGR=[GND=masc,NUM=sg]] -> 'hermoso'
+Adj[AGR=[GND=masc,NUM=pl]] -> 'hermosos'
+Adj[AGR=[GND=fem,NUM=sg]] -> 'hermosa'
+Adj[AGR=[GND=fem,NUM=pl]] -> 'hermosas'
+

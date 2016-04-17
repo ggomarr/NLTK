@@ -1,0 +1,6 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+# S expansion productions
+S -> Jim[HEAD=[NUM='sg']]

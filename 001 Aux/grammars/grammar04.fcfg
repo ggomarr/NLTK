@@ -1,0 +1,51 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+# S expansion productions
+S -> N[BAR=2, NUM=?n] V[BAR=2, NUM=?n]
+# NP expansion productions
+N[BAR=2, NUM=?n] -> PropN[NUM=?n]
+N[BAR=2, NUM=?n] -> Det[NUM=?n] N[BAR=1, NUM=?n]
+N[BAR=2, NUM=sg] -> N[BAR=1, NUM=sg, -COUNT]
+N[BAR=2, NUM=pl] -> N[BAR=1, NUM=pl]
+N[BAR=1, NUM=?n] -> N[BAR=1, NUM=?n] P[BAR=2]
+N[BAR=1, NUM=sg, -COUNT] -> N[BAR=0, NUM=sg, -COUNT]
+N[BAR=1, NUM=?n, COUNT=?c] -> N[BAR=0, NUM=?n, COUNT=?c]
+# VP expansion productions
+V[BAR=2, TENSE=?t, NUM=?n] -> V[BAR=1, TENSE=?t, NUM=?n]
+V[BAR=1, TENSE=?t, NUM=?n] -> V[BAR=1, TENSE=?t, NUM=?n] P[BAR=2]
+V[BAR=1, SUBCAT=intrans, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=intrans, TENSE=?t, NUM=?n]
+V[BAR=1, SUBCAT=trans, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=trans, TENSE=?t, NUM=?n] N[BAR=2]
+V[BAR=1, SUBCAT=state, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=state, TENSE=?t, NUM=?n] ADJ
+V[BAR=1, SUBCAT=clause, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=clause, TENSE=?t, NUM=?n] SBar
+# PP expansion productions
+P[BAR=2] -> Prep P[BAR=1]
+P[BAR=1] -> P[BAR=0]
+P[BAR=0] -> N[BAR=2]
+SBar -> Comp S
+# ###################
+# Lexical Productions
+# ###################
+Det[NUM=sg] -> 'this' | 'every' | 'a'
+Det[NUM=pl] -> 'these' | 'all'
+Det -> 'the' | 'some' | 'several'
+PropN[NUM=sg]-> 'Kim' | 'Jody'
+N[BAR=0, NUM=sg, +COUNT] -> 'dog' | 'girl' | 'car' | 'child' | 'boy' | 'song' | 'bike'
+N[BAR=0, NUM=sg, -COUNT] -> 'water'
+N[BAR=0, NUM=pl] -> 'dogs' | 'girls' | 'cars' | 'children' | 'boys' | 'songs'
+V[BAR=0, SUBCAT=intrans, TENSE=pres,  NUM=sg] -> 'disappears' | 'walks'
+V[BAR=0, SUBCAT=trans, TENSE=pres, NUM=sg] -> 'sees' | 'likes' | 'sings'
+V[BAR=0, SUBCAT=state, TENSE=pres, NUM=sg] -> 'is' | 'seems'
+V[BAR=0, SUBCAT=clause, TENSE=pres, NUM=sg] -> 'says' | 'thinks' | 'claims'
+V[BAR=0, SUBCAT=intrans, TENSE=pres,  NUM=pl] -> 'disappear' | 'walk'
+V[BAR=0, SUBCAT=trans, TENSE=pres, NUM=pl] -> 'see' | 'like' | 'sing'
+V[BAR=0, SUBCAT=state, TENSE=pres, NUM=pl] -> 'are' | 'seem'
+V[BAR=0, SUBCAT=clause, TENSE=pres, NUM=pl] -> 'say' | 'think' | 'claim'
+V[BAR=0, SUBCAT=intrans, TENSE=past] -> 'disappeared' | 'walked'
+V[BAR=0, SUBCAT=trans, TENSE=past] -> 'saw' | 'liked' | 'sang'
+V[BAR=0, SUBCAT=state, TENSE=past] -> 'were' | 'seemed'
+V[BAR=0, SUBCAT=clause, TENSE=past] -> 'said' | 'thought' | 'claimed'
+Prep -> 'with' | 'by' | 'on' | 'in'
+ADJ -> 'precious' | 'happy'
+Comp -> 'that'

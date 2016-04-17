@@ -1,0 +1,31 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+
+# S expansion productions
+S -> NP[AGR=?n] VP[-REG, AGR=?n]
+S -> NP[REG_L=?m] VP[+REG, REG_L=?m]
+
+# NP expansion productions
+NP[REG_L=?m, AGR=?n] -> PN[REG_L=?m, AGR=?n]
+
+# VP expansion productions
+VP[REG=?r, REG_L=?l, AGR=?n] -> V[REG=?r, REG_L=?l, AGR=?n] ADJ
+VP[REG=?r, REG_L=?l, AGR=?n] -> V[REG=?r, REG_L=?l, AGR=?n] ADV
+# ###################
+# Lexical Productions
+# ###################
+
+PN[REG_L=1, AGR=[NUM=SG, PERS=1]] -> 'I'
+PN[REG_L=1, AGR=[NUM=SG, PERS=2]] -> 'You'
+PN[REG_L=2, AGR=[NUM=SG, PERS=3]] -> 'He' | 'She' | 'It'
+PN[REG_L=1, AGR=[NUM=PL]] -> 'We' | 'You' | 'They'
+V[-REG, AGR=[NUM=SG, PERS=1]] -> 'am'
+V[-REG, AGR=[NUM=SG, PERS=2]] -> 'are'
+V[-REG, AGR=[NUM=SG, PERS=3]] -> 'is'
+V[-REG, AGR=[NUM=PL]] -> 'are'
+V[+REG, REG_L=1] -> 'walk'
+V[+REG, REG_L=2] -> 'walks'
+ADJ -> 'happy'
+ADV -> 'quickly'

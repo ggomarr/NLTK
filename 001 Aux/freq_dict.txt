@@ -1,0 +1,8 @@
+many 4
+of 6
+these 2
+words 121
+are 3
+not 12
+represented 6
+properly 14

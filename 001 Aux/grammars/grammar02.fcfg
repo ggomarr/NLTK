@@ -1,0 +1,27 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+
+# S expansion productions
+S -> NP[AGR=?n] VP[AGR=?n]
+
+# NP expansion productions
+NP[AGR=?n] -> PN[AGR=?n]
+
+# VP expansion productions
+VP[AGR=?n] -> V[AGR=?n] ADJ
+
+# ###################
+# Lexical Productions
+# ###################
+
+PN[AGR=[NUM=SG, PERS=1]] -> 'I'
+PN[AGR=[NUM=SG, PERS=2]] -> 'You'
+PN[AGR=[NUM=SG, PERS=3]] -> 'He' | 'She' | 'It'
+PN[AGR=[NUM=PL]] -> 'We' | 'You' | 'They'
+V[AGR=[NUM=SG, PERS=1]] -> 'am'
+V[AGR=[NUM=SG, PERS=2]] -> 'are'
+V[AGR=[NUM=SG, PERS=3]] -> 'is'
+V[AGR=[NUM=PL]] -> 'are'
+ADJ -> 'happy'

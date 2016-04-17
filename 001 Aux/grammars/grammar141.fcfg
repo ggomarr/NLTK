@@ -1,0 +1,32 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+# S expansion productions
+S -> NP VP
+# NP expansion productions
+NP -> PN
+NP -> Det N
+NP -> NP
+# VP expansion productions
+VP -> V[SUBCAT=<NP,Adj>]
+VP -> V[SUBCAT=<NP>]
+VP -> V[SUBCAT=<NP, NP>]
+VP -> VP PP
+# PP expansion productions
+PP -> Prep NP
+# Lexical productions
+Det[HEAD=[NUM=sg]] -> 'this' | 'every' | 'a'
+Det[HEAD=[NUM=pl]] -> 'these' | 'all'
+Det[HEAD=[]] -> 'the' | 'some' | 'several'
+PN[HEAD=[NUM=sg, PERS=1]] -> 'I'
+PN[HEAD=[NUM=sg, PERS=2]] -> 'you'
+PN[HEAD=[NUM=sg, PERS=3]] -> 'he' | 'she' | 'it'
+PN[HEAD=[NUM=pl, PERS=1]] -> 'we'
+PN[HEAD=[NUM=pl, PERS=2]] -> 'you'
+PN[HEAD=[NUM=pl, PERS=3]] -> 'they'
+N[HEAD=[NUM=sg, PERS=3]] -> 'dog' | 'girl' | 'car' | 'child' | 'boy' | 'song' | 'bike'
+N[HEAD=[NUM=pl, PERS=3]] -> 'dogs' | 'girls' | 'cars' | 'children' | 'boys' | 'songs'
+Adj -> 'precious' | 'happy'
+Prep -> 'with' | 'by' | 'on' | 'in'
+

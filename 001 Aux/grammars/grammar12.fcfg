@@ -1,0 +1,63 @@
+% start S
+# ###################
+# Grammar Productions
+# ###################
+# S expansion productions
+S -> N[BAR=2, NUM=?n] V[BAR=2, NUM=?n]
+# NP expansion productions
+N[BAR=2, NUM=?n, IN=?i, CONT=?d] -> PropN[NUM=?n, IN=?i, CONT=?d]
+N[BAR=2, NUM=?n, IN=?i, CONT=?d] -> Det[NUM=?n] N[BAR=1, NUM=?n, IN=?i, CONT=?d]
+N[BAR=2, NUM=sg, IN=?i, CONT=?d] -> N[BAR=1, NUM=sg, -COUNT, IN=?i, CONT=?d]
+N[BAR=2, NUM=pl, IN=?i, CONT=?d] -> N[BAR=1, NUM=pl, IN=?i, CONT=?d]
+N[BAR=1, NUM=?n, IN=?i, CONT=?d] -> N[BAR=1, NUM=?n, IN=?i, CONT=?d] P[BAR=2]
+N[BAR=1, NUM=sg, -COUNT, IN=?i, CONT=?d] -> N[BAR=0, NUM=sg, -COUNT, IN=?i, CONT=?d]
+N[BAR=1, NUM=?n, COUNT=?c, IN=?i, CONT=?d] -> N[BAR=0, NUM=?n, COUNT=?c, IN=?i, CONT=?d]
+# VP expansion productions
+V[BAR=2, TENSE=?t, NUM=?n] -> V[BAR=1, TENSE=?t, NUM=?n]
+V[BAR=1, TENSE=?t, NUM=?n] -> V[BAR=1, TENSE=?t, NUM=?n] P[BAR=2]
+V[BAR=1, SUBCAT=intrans, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=intrans, TENSE=?t, NUM=?n]
+V[BAR=1, SUBCAT=trans, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=trans, -IN, TENSE=?t, NUM=?n] N[BAR=2]
+V[BAR=1, SUBCAT=trans, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=trans, +IN, +CONT, TENSE=?t, NUM=?n] N[BAR=2, +IN, +CONT] Prep[+IN, +CONT] N[BAR=2, +IN, -CONT]
+V[BAR=1, SUBCAT=trans, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=trans, +IN, -CONT, TENSE=?t, NUM=?n] N[BAR=2, +IN, -CONT] Prep[+IN, -CONT] N[BAR=2, +IN, +CONT]
+V[BAR=1, SUBCAT=state, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=state, TENSE=?t, NUM=?n] ADJ
+V[BAR=1, SUBCAT=clause, TENSE=?t, NUM=?n] -> V[BAR=0, SUBCAT=clause, TENSE=?t, NUM=?n] SBar
+# PP expansion productions
+P[BAR=2, IN=?i, CONT=?d] -> Prep[IN=?i, CONT=?d] P[BAR=1, IN=?i, CONT=?d]
+P[BAR=1, IN=?i, CONT=?d] -> P[BAR=0, IN=?i, CONT=?d]
+P[BAR=0, IN=?i, CONT=?d] -> N[BAR=2, IN=?i, CONT=?d]
+SBar -> Comp S
+# ###################
+# Lexical Productions
+# ###################
+Det[NUM=sg] -> 'this' | 'every' | 'a'
+Det[NUM=pl] -> 'these' | 'all'
+Det -> 'the' | 'some' | 'several'
+PropN[NUM=sg]-> 'Kim' | 'Jody'
+N[BAR=0, NUM=sg, +COUNT, -CONT] -> 'dog' | 'girl' | 'car' | 'child' | 'boy' | 'song' | 'bike' | 'farmer'
+N[BAR=0, NUM=sg, +COUNT, +CONT] -> 'farmer' | 'cart'
+N[BAR=0, NUM=sg, -COUNT, -CONT] -> 'water' | 'dirt' | 'sand' | 'joy'
+N[BAR=0, NUM=pl, -CONT] -> 'dogs' | 'girls' | 'cars' | 'children' | 'boys' | 'songs' | 'farmers'
+N[BAR=0, NUM=pl, +CONT] -> 'farmers' | 'carts'
+V[BAR=0, SUBCAT=intrans, TENSE=pres,  NUM=sg] -> 'disappears' | 'walks'
+V[BAR=0, SUBCAT=trans, -IN, TENSE=pres, NUM=sg] -> 'sees' | 'likes' | 'sings'
+V[BAR=0, SUBCAT=trans, +IN, +CONT, TENSE=pres, NUM=sg] -> 'fills' | 'loads'
+V[BAR=0, SUBCAT=trans, +IN, -CONT, TENSE=pres, NUM=sg] -> 'loads' | 'dumps'
+V[BAR=0, SUBCAT=state, TENSE=pres, NUM=sg] -> 'is' | 'seems'
+V[BAR=0, SUBCAT=clause, TENSE=pres, NUM=sg] -> 'says' | 'thinks' | 'claims'
+V[BAR=0, SUBCAT=intrans, TENSE=pres,  NUM=pl] -> 'disappear' | 'walk'
+V[BAR=0, SUBCAT=trans, -IN, TENSE=pres, NUM=pl] -> 'see' | 'like' | 'sing'
+V[BAR=0, SUBCAT=trans, +IN, +CONT, TENSE=pres, NUM=pl] -> 'fill' | 'load'
+V[BAR=0, SUBCAT=trans, +IN, -CONT, TENSE=pres, NUM=pl] -> 'load' | 'dump'
+V[BAR=0, SUBCAT=state, TENSE=pres, NUM=pl] -> 'are' | 'seem'
+V[BAR=0, SUBCAT=clause, TENSE=pres, NUM=pl] -> 'say' | 'think' | 'claim'
+V[BAR=0, SUBCAT=intrans, TENSE=past] -> 'disappeared' | 'walked'
+V[BAR=0, SUBCAT=trans, -IN, TENSE=past] -> 'saw' | 'liked' | 'sang'
+V[BAR=0, SUBCAT=trans, +IN, +CONT, TENSE=past] -> 'filled' | 'loaded'
+V[BAR=0, SUBCAT=trans, +IN, -CONT, TENSE=past] -> 'loaded' | 'dumped'
+V[BAR=0, SUBCAT=state, TENSE=past] -> 'were' | 'seemed'
+V[BAR=0, SUBCAT=clause, TENSE=past] -> 'said' | 'thought' | 'claimed'
+Prep[-IN] -> 'with' | 'by' | 'on' | 'in' | 'into'
+Prep[+IN, +CONT] -> 'with'
+Prep[+IN, -CONT] -> 'into'
+ADJ -> 'precious' | 'happy'
+Comp -> 'that'
